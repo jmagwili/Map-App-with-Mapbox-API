@@ -58,7 +58,10 @@ function App() {
               offsetLeft={-3.5 * viewport.zoom}
               offsetRight={-7 * viewport.zoom}
               draggable={true}
-              onDragEnd={e=>console.log(e.lngLat.lng,e.lngLat.lat)}
+              onDragEnd={e=>{
+                setLatitude(e.lngLat.lat)
+                setLongitude(e.lngLat.lng)
+              }}
             >
               <div>
                 <FaLocationDot 
