@@ -9,6 +9,7 @@ import { FaLocationDot } from "react-icons/fa6";
 const token = import.meta.env.VITE_MAPBOX_TOKEN
 
 function App() {
+  const [newPlace, setNewPlace] = useState(null)
   const [longitude, setLongitude] = useState(0);
   const [latitude, setLatitude] = useState(0);
   const [viewport, setViewport] = useState({
@@ -42,25 +43,35 @@ function App() {
         width = "100%"
         height = "100%"
         mapStyle="mapbox://styles/mapbox/streets-v12"
+        interactive = {true}
+        onDrag={(e)=>{
+          setViewport({
+            longitude: e.viewState.longitude,
+            latitude: e.viewState.latitude
+          })
+        }}
       >
-        <Marker
-          latitude={latitude}
-          longitude={longitude}
-          offsetLeft={-3.5 * viewport.zoom}
-          offsetRight={-7 * viewport.zoom}
-          draggable={true}
-          onDragEnd={e=>console.log(e.lngLat.lng,e.lngLat.lat)}
-        >
-          <div>
-            <FaLocationDot 
-              style={{
-                height: "40px",
-                width:"auto",
-                color:"red"
-              }}
-            />
-          </div>
-        </Marker>
+
+            <Marker
+              latitude={latitude}
+              longitude={longitude}
+              offsetLeft={-3.5 * viewport.zoom}
+              offsetRight={-7 * viewport.zoom}
+              draggable={true}
+              onDragEnd={e=>console.log(e.lngLat.lng,e.lngLat.lat)}
+            >
+              <div>
+                <FaLocationDot 
+                  style={{
+                    height: "40px",
+                    width:"auto",
+                    color:"red"
+                  }}
+                />
+              </div>
+            </Marker>
+
+        
       </ReactMapGL>
       </div>
     </>
