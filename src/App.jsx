@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
-import reactLogo from './assets/react.svg';
-import ReactMapGL, { Marker } from 'react-map-gl'
+
+import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { FaLocationDot } from "react-icons/fa6";
@@ -18,6 +18,9 @@ function App() {
     zoom: 15,
   });
 
+  const [showPopup,setShowPopup] = useState(false);
+  
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -33,6 +36,14 @@ function App() {
       { enableHighAccuracy: true }
     );
   }, []);
+
+
+  const onClickMarker = () => {
+    setShowPopup(true);
+  }
+  const closePopup = () => {
+    setShowPopup(false);
+  };
 
   return (
     <> 
@@ -61,7 +72,10 @@ function App() {
               onDragEnd={e=>{
                 setLatitude(e.lngLat.lat)
                 setLongitude(e.lngLat.lng)
+                console.log(e.lngLat.lat)
+                console.log(e.lngLat.lng)
               }}
+              onClick={onClickMarker}
             >
               <div>
                 <FaLocationDot 
@@ -73,6 +87,22 @@ function App() {
                 />
               </div>
             </Marker>
+
+            {showPopup && (<Popup
+              latitude={latitude}
+              longitude={longitude}
+              offset={{
+                'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]
+              }}
+              closeButton={true}
+              closeOnClick={false}
+              anchor='top'
+              onClose={closePopup}
+              >
+              <h1>Popup</h1>
+            </Popup>)}
+
+            
 
         
       </ReactMapGL>
