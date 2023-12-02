@@ -180,7 +180,7 @@ function App() {
               onClose={closePopup}
               
             >
-              <h2>{mockApiData[selectedMarker].username}</h2>
+              <h2 style={{color:"black"}}>{mockApiData[selectedMarker].username}</h2>
             </Popup>
           )}
         </ReactMapGL>
