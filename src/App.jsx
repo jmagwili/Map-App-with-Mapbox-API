@@ -139,6 +139,9 @@ function App() {
       <h2>Multiple Locations</h2>
       <div style={{ width: "50vw", height: "50vh", marginTop: "50px" }}>
         <ReactMapGL
+          longitude={mockApiData[3].coords[0]}
+          latitude={mockApiData[3].coords[1]}
+          zoom={12}
           mapboxAccessToken={token}
           width="100%"
           height="100%"
@@ -151,7 +154,6 @@ function App() {
               key={index}
               latitude={customer.coords[1]}
               longitude={customer.coords[0]}
-              draggable={true}
               onClick={() => onClickMarker(index)}
             >
               <div>
