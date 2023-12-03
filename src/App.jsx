@@ -19,7 +19,7 @@ function App() {
 
   const [mockApiData, setMockApiData] = useState([
     {
-      username: "Shannon",
+      username: "Shannon sins",
       coords: [120.9581200219007, 14.31781346759307],
     },
     {
@@ -27,7 +27,7 @@ function App() {
       coords: [120.9650748167237, 14.336595493481354],
     },
     {
-      username: "Jonel Belaro Baqar",
+      username: "Jonel Belaro Bachar",
       coords: [120.98195064088475, 14.334375074985957],
     },
     {
@@ -35,7 +35,7 @@ function App() {
       coords: [120.97472806593458, 14.328251988859591],
     },
     {
-      username: "Johnny sins",
+      username: "shanny sins",
       coords: [120.95176195520145, 14.325773806431215],
     },
     {
@@ -137,7 +137,7 @@ function App() {
         </ReactMapGL>
       </div>
       <h2>Multiple Locations</h2>
-      <div style={{ width: "50vw", height: "50vh", marginTop: "50px" }}>
+      <div style={{ width: "50vw", height: "50vh", marginTop: "50px"}}>
         <ReactMapGL
           longitude={mockApiData[3].coords[0]}
           latitude={mockApiData[3].coords[1]}
